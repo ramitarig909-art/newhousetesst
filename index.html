@@ -430,6 +430,101 @@ body.ar .cp-chip{font-family:'Cairo',sans-serif;}
 </style>
 <noscript><style>.reveal{opacity:1 !important;transform:none !important;} .collection-panel{display:block !important;}</style></noscript>
 
+<style>
+/* ===============================================================
+   HOME COLLECTION BOXES – bigger cards, full image visible,
+   room name placed UNDER the image (no overlay covering it)
+   =============================================================== */
+
+/* --- DESKTOP & TABLET: full image visible on a dark backdrop --- */
+.collection-box{
+  aspect-ratio: auto !important;             /* let it grow tall as needed */
+  display: flex !important;
+  flex-direction: column;
+  background: #f4ede1 !important;            /* warm card body (matches site) */
+  border-radius: 10px;
+  overflow: hidden;
+}
+.collection-box img{
+  width: 100%;
+  height: 280px;                             /* big, clear image */
+  object-fit: contain !important;            /* WHOLE picture, never cropped */
+  background: #0d1b2e;                       /* dark matte behind the image */
+  display: block;
+}
+.collection-box:hover img{ transform: scale(1.04); }
+
+/* Remove the dark gradient overlay (nothing to overlay anymore) */
+.box-overlay{ display: none !important; }
+
+/* The label panel: moves OUT of the image and sits below it */
+.box-label{
+  position: static !important;
+  padding: 1.1rem 1.2rem 1.3rem !important;
+  background: transparent !important;
+  text-align: center !important;
+}
+body.ar .box-label{ text-align: center !important; }
+
+.box-name{
+  color: var(--dark) !important;             /* dark text on cream panel */
+  font-size: 1.45rem !important;
+  line-height: 1.15 !important;
+  display: block;
+  margin-bottom: .55rem;
+}
+.box-cta{
+  display: inline-block !important;
+  background: transparent !important;
+  border: 1px solid var(--gold) !important;
+  color: var(--gold) !important;
+  font-size: .68rem !important;
+  letter-spacing: .18em !important;
+  padding: .55rem 1.1rem !important;
+  border-radius: 30px !important;
+  margin-top: 0 !important;
+  transition: all .3s ease !important;
+}
+.collection-box:hover .box-cta{
+  background: var(--gold) !important;
+  color: #0d1b2e !important;
+}
+
+/* --- TABLET (3 -> 2 columns), bigger images --- */
+@media (max-width: 960px){
+  .collection-boxes{
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.1rem !important;
+  }
+  .collection-box img{ height: 260px; }
+}
+
+/* --- MOBILE: ONE big card per row, very large image --- */
+@media (max-width: 760px){
+  .collection-boxes{
+    grid-template-columns: 1fr !important;
+    gap: 1.3rem !important;
+    max-width: 560px !important;
+    padding: 0 1rem !important;
+  }
+  .collection-box img{
+    height: 70vw;                            /* big image proportional to screen */
+    max-height: 440px;
+    min-height: 280px;
+  }
+  .box-name{ font-size: 1.7rem !important; }
+  .box-cta{ font-size: .72rem !important; padding: .65rem 1.3rem !important; }
+}
+
+/* --- Very narrow phones: even taller image --- */
+@media (max-width: 430px){
+  .collection-box img{
+    height: 82vw;
+    max-height: 460px;
+  }
+  .box-name{ font-size: 1.85rem !important; }
+}
+</style>
 </head>
 <body>
 
