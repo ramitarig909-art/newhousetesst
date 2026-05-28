@@ -568,6 +568,105 @@ body.ar .nh-lb-name{ font-family:'Cairo',sans-serif; }
 }
 body.nh-lb-locked{ overflow:hidden; }
 </style>
+<style>
+/* ===============================================================
+   PRODUCT CARDS – mobile-first BIG IMAGE, NAME UNDER IMAGE
+   =============================================================== */
+
+/* On mobile, drop to ONE big card per row and put the name below
+   the image (no more overlay covering the furniture). */
+@media (max-width: 760px){
+
+  /* Single-column grid, big cards */
+  .prod-grid,
+  .prod-grid-2,
+  .prod-grid-3,
+  .prod-grid-featured{
+    grid-template-columns: 1fr !important;
+    gap: 1.4rem !important;
+  }
+
+  /* Card becomes a vertical stack: image on top, info below.
+     No aspect-ratio so it can grow as tall as needed. */
+  .prod-card{
+    aspect-ratio: auto !important;
+    display: flex;
+    flex-direction: column;
+    background: #f4ede1 !important;     /* warm card body matching site palette */
+    border-radius: 8px;
+    box-shadow: 0 14px 34px -22px rgba(13,27,46,.45);
+  }
+
+  /* The image area: tall, dark matte backdrop, full picture visible */
+  .prod-card > img,
+  .prod-card .prod-img,
+  .prod-card a > img{
+    width: 100%;
+    height: 78vw;                       /* very large image */
+    max-height: 480px;
+    min-height: 320px;
+    object-fit: contain !important;
+    background: #0d1b2e;
+    border-radius: 8px 8px 0 0;
+    display: block;
+  }
+
+  /* Hide the dark gradient overlay on mobile – nothing to overlay anymore */
+  .prod-overlay{ display: none !important; }
+
+  /* The info panel: moves OUT of the image and sits below */
+  .prod-info{
+    position: static !important;
+    transform: none !important;
+    padding: 1rem 1.1rem 1.1rem !important;
+    background: transparent !important;
+    text-align: left;
+  }
+  body.ar .prod-info{ text-align: right; }
+
+  .prod-cat{
+    color: var(--gold) !important;
+    font-size: .68rem !important;
+    letter-spacing: .2em !important;
+    margin-bottom: .35rem !important;
+  }
+  .prod-name{
+    color: var(--dark) !important;       /* dark text now (light card bg) */
+    font-size: 1.55rem !important;
+    line-height: 1.2 !important;
+    font-weight: 500 !important;
+  }
+  .prod-line{ background: var(--gold) !important; margin-top: .6rem !important; }
+
+  /* Action buttons (WhatsApp / Share): always visible under name */
+  .prod-actions{
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    padding: .2rem 1.1rem 1rem !important;
+    gap: .55rem !important;
+  }
+  .prod-btn{ flex: 1; justify-content: center; }
+
+  /* Zoom cue stays in the image's top-right */
+  .prod-zoom-cue{
+    top: .8rem !important;
+    right: .8rem !important;
+    background: rgba(13,27,46,.7) !important;
+  }
+  body.ar .prod-zoom-cue{ right: auto !important; left: .8rem !important; }
+}
+
+/* Very narrow phones: even taller image */
+@media (max-width: 430px){
+  .prod-card > img{
+    height: 92vw;
+    max-height: 520px;
+  }
+  .prod-name{ font-size: 1.7rem !important; }
+}
+</style>
 </head>
 <body class="collection-page" data-page="collection">
 
