@@ -666,6 +666,30 @@ body.nh-lb-locked{ overflow:hidden; }
   }
   .prod-name{ font-size: 1.7rem !important; }
 }
+
+/* === CLEAN CARD OVERRIDE (authoritative, added last) === */
+.prod-card{
+  aspect-ratio: 4 / 3 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  background:#f4ede1 !important;
+  border-radius:10px !important;
+  overflow:hidden !important;
+  box-shadow:0 14px 34px -22px rgba(13,27,46,.45) !important;
+}
+.prod-card img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;     /* whole photo visible, never cropped */
+  object-position:center !important;
+  background:#0d1b2e !important;     /* clean matte backdrop fills empty space */
+  padding:0 !important;
+  display:block !important;
+}
+@media (max-width:640px){
+  .prod-card{ aspect-ratio:4 / 3 !important; }
+}
+
 </style>
 <!-- OPEN GRAPH / TWITTER (overridden per-product by JS when ?p=slug present) -->
 <meta property="og:type" content="website">
